@@ -25,7 +25,6 @@ const ProfilePage: React.FC = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
 
   useEffect(() => {
-    // Get active tab from URL if present
     const tabParam = searchParams.get('tab');
     if (tabParam) {
       setActiveTab(tabParam);
@@ -57,7 +56,7 @@ const ProfilePage: React.FC = () => {
           {
             id: 'pres1',
             userId: user.id,
-            image: 'https://images.pexels.com/photos/4226219/pexels-photo-4226219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6PF18Esj1LI-cgo8tjt5165ucDTIp5R1Ejg&s",
             status: 'approved',
             createdAt: '2025-05-15T14:30:00Z',
             expiresAt: '2025-11-15T14:30:00Z',
@@ -71,7 +70,6 @@ const ProfilePage: React.FC = () => {
           }
         ]);
         
-        // Fetch addresses (mock data for demo)
         setAddresses([
           {
             fullName: 'John Doe',
