@@ -2,6 +2,8 @@
 
 A modern, responsive online pharmacy platform built with React and TypeScript. This application provides a seamless experience for users to browse medicines, manage prescriptions, and track orders.
 
+live: https://incomparable-bunny-8aed28.netlify.app/
+
 ## Features
 
 - 🔍 Advanced medicine search with filters
