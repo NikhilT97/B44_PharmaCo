@@ -110,14 +110,14 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={20} className="text-primary-500 flex-shrink-0" />
-                <span className="text-gray-400">support@mediquick.com</span>
+                <span className="text-gray-400">support@EasyMeds.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} MediQuick. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Easy Meds. All rights reserved.</p>
           <p className="mt-2 text-sm">
             This is a demo project. All product names, logos, and brands are property of their respective owners.
           </p>
