@@ -84,6 +84,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ fullWidth = false, onSearch }) =>
           placeholder="Search for medicines, brands..."
           className="input pr-12"
           aria-label="Search for medicines"
+           type="text"
+  value={query}
+  onChange={(e) => setQuery(e.target.value)}
+  placeholder="Search for medicines, brands..."
+  className="input pr-12 text-black"
+  aria-label="Search for medicines"
         />
         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
           {query && (
