@@ -1,17 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Search, X } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { useDebounce } from '../../hooks/useDebounce';
-import { searchProducts } from '../../services/productService';
-import { Product } from '../../types';
+import React, { useState, useRef, useEffect } from "react";
+import { Search, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useDebounce } from "../../hooks/useDebounce";
+import { searchProducts } from "../../services/productService";
+import { Product } from "../../types";
 
 interface SearchBarProps {
   fullWidth?: boolean;
   onSearch?: (query: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ fullWidth = false, onSearch }) => {
-  const [query, setQuery] = useState('');
+const SearchBar: React.FC<SearchBarProps> = ({
+  fullWidth = false,
+  onSearch,
+}) => {
+  const [query, setQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<Product[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -39,14 +42,17 @@ const SearchBar: React.FC<SearchBarProps> = ({ fullWidth = false, onSearch }) =>
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
         setIsDropdownOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -65,31 +71,28 @@ const SearchBar: React.FC<SearchBarProps> = ({ fullWidth = false, onSearch }) =>
   const handleItemClick = (productId: string) => {
     navigate(`/product/${productId}`);
     setIsDropdownOpen(false);
-    setQuery('');
+    setQuery("");
   };
 
   const handleClearSearch = () => {
-    setQuery('');
+    setQuery("");
     setResults([]);
     setIsDropdownOpen(false);
   };
 
   return (
-    <div className={`relative ${fullWidth ? 'w-full' : 'max-w-md'}`} ref={searchRef}>
+    <div
+      className={`relative ${fullWidth ? "w-full" : "max-w-md"}`}
+      ref={searchRef}
+    >
       <form onSubmit={handleSearch} className="relative">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for medicines, brands..."
-          className="input pr-12"
+          className="input pr-12 text-black"
           aria-label="Search for medicines"
-           type="text"
-  value={query}
-  onChange={(e) => setQuery(e.target.value)}
-  placeholder="Search for medicines, brands..."
-  className="input pr-12 text-black"
-  aria-label="Search for medicines"
         />
         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
           {query && (
@@ -134,7 +137,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ fullWidth = false, onSearch }) =>
                       />
                     </div>
                     <div className="ml-3">
-                      <p className="text-sm font-medium text-gray-900">{product.name}</p>
+                      <p className="text-sm font-medium text-gray-900">
+                        {product.name}
+                      </p>
                       <p className="text-xs text-gray-500">{product.brand}</p>
                     </div>
                   </div>
@@ -150,7 +155,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ fullWidth = false, onSearch }) =>
               </li>
             </ul>
           ) : query.length >= 2 ? (
-            <div className="p-4 text-center text-gray-500">No results found</div>
+            <div className="p-4 text-center text-gray-500">
+              No results found
+            </div>
           ) : null}
         </div>
       )}
@@ -159,3 +166,4 @@ const SearchBar: React.FC<SearchBarProps> = ({ fullWidth = false, onSearch }) =>
 };
 
 export default SearchBar;
+// change text color to white in the search bar
